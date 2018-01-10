@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_medium_big" >25sp</dimen>
+    <dimen name="gird_item_margin_yellow">5.5dp</dimen>
+</resources>

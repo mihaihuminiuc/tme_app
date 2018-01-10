@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TmeTestApp</string>
+    <string name="string_title">TITLE</string>
+    <string name="json_key_wallpapers">wallpapers</string>
+</resources>
