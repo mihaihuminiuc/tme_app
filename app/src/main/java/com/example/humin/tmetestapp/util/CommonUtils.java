@@ -6,6 +6,8 @@ import android.graphics.Point;
 import android.os.Build;
 import android.view.Display;
 
+import java.util.Random;
+
 /**
  * Created by humin on 12/28/2017.
  */

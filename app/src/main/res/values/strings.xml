@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">TmeTestApp</string>
-    <string name="string_title">TITLE</string>
+    <string name="string_title">Wallpapers</string>
     <string name="json_key_wallpapers">wallpapers</string>
+    <string name="fragment_1">FRAGMENT_1</string>
+    <string name="fragment_2">FRAGMENT_2</string>
+    <string name="activity_1">ACTIVITY_1</string>
+    <string name="activity_2">ACTIVITY_2</string>
 </resources>

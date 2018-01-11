@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.humin.tmetestapp.R;
 import com.example.humin.tmetestapp.adapter.ListViewAdapter;
+import com.example.humin.tmetestapp.listener.WallpaperListClickListener;
 import com.example.humin.tmetestapp.model.Wallpaper;
 
 /**
@@ -24,6 +25,7 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
     private LinearLayout mBoderLayout;
     private ImageView mWallpaperImage;
     private Point size;
+    private View view;
 
     /**
      * The ViewHolder that will be used to display the data in each item shown
@@ -36,6 +38,7 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         mBoderLayout = itemView.findViewById(R.id.layout_border);
         mWallpaperImage = itemView.findViewById(R.id.wallpaper_img);
+        view = itemView;
     }
 
     /**
@@ -44,30 +47,49 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
      * @param mWallpaper
      *         The viewmodel that contains the data
      */
-    public void bindData(final Wallpaper mWallpaper, int type, Context context, Point mScreenDimensions) {
+    public void bindData(final Wallpaper mWallpaper, int type, Context context, Point mScreenDimensions, WallpaperListClickListener mWallpaperListClickListener) {
+        RequestOptions options;
+        LinearLayout.LayoutParams params;
         switch (type){
             case ListViewAdapter.ADAPTER_STATE_1:
                 mBoderLayout.setBackgroundResource(R.drawable.yellow_border);
 
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mBoderLayout.getLayoutParams();
+                params = (LinearLayout.LayoutParams) mBoderLayout.getLayoutParams();
                 params.height = (int) (mScreenDimensions.y*0.2f);
                 params.width = (int) (mScreenDimensions.x*0.5f);
 
                 mBoderLayout.setLayoutParams(params);
 
-                RequestOptions options = new RequestOptions();
+                options = new RequestOptions();
                 options.centerCrop();
 
                 Glide.with(context)
                         .load(mWallpaper.getTmb_url())
                         .apply(options)
                         .into(mWallpaperImage);
+
+                view.setOnClickListener(view -> mWallpaperListClickListener.onItemClick(mWallpaper.getImg_url()));
+
                 break;
             case ListViewAdapter.ADAPTER_STATE_2:
                 mBoderLayout.setBackgroundResource(R.drawable.blue_border);
+
+                params = (LinearLayout.LayoutParams) mBoderLayout.getLayoutParams();
+                params.height = (int) (mScreenDimensions.y*0.2f);
+                params.width = (int) (mScreenDimensions.x*0.3f);
+
+                mBoderLayout.setLayoutParams(params);
+
+                options = new RequestOptions();
+                options.centerCrop();
+
                 Glide.with(context)
                         .load(mWallpaper.getTmb_url())
+                        .apply(options)
                         .into(mWallpaperImage);
+
+                view.setOnClickListener(view -> mWallpaperListClickListener.onItemClick(mWallpaper.getImg_url()));
+
                 break;
         }
 

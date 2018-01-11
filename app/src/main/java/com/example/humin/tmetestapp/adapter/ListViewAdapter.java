@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.humin.tmetestapp.R;
 import com.example.humin.tmetestapp.holder.ListViewHolder;
+import com.example.humin.tmetestapp.listener.WallpaperListClickListener;
 import com.example.humin.tmetestapp.model.Wallpaper;
 import com.example.humin.tmetestapp.model.WallpaperList;
 import com.example.humin.tmetestapp.util.CommonUtils;
@@ -24,6 +25,7 @@ import java.util.List;
 public class ListViewAdapter extends RecyclerView.Adapter{
 
     private WallpaperList wallpapers = new WallpaperList();
+    private WallpaperListClickListener mWallpaperListClickListener;
     private int mType = 0;
     private Context mContext;
 
@@ -32,13 +34,14 @@ public class ListViewAdapter extends RecyclerView.Adapter{
 
     private Point mScreenDimensions;
 
-    public ListViewAdapter(final WallpaperList wallpapers, int type, Context context) {
+    public ListViewAdapter(final WallpaperList wallpapers, int type, Context context, WallpaperListClickListener listener) {
         if (wallpapers != null) {
             this.wallpapers = wallpapers;
         }
         this.mType = type;
         this.mContext = context;
         this.mScreenDimensions = CommonUtils.getDefaultDisplaySize((AppCompatActivity) context);
+        this.mWallpaperListClickListener = listener;
 
     }
 
@@ -50,7 +53,7 @@ public class ListViewAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((ListViewHolder) holder).bindData(wallpapers.getWallpapers().get(position), mType, mContext, mScreenDimensions);
+        ((ListViewHolder) holder).bindData(wallpapers.getWallpapers().get(position), mType, mContext, mScreenDimensions,mWallpaperListClickListener);
     }
 
     @Override
@@ -61,5 +64,12 @@ public class ListViewAdapter extends RecyclerView.Adapter{
     @Override
     public int getItemViewType(final int position) {
         return R.layout.list_item;
+    }
+
+    public void updateList(WallpaperList wallpapers){
+        if (wallpapers != null) {
+            this.wallpapers = wallpapers;
+        }
+        notifyDataSetChanged();
     }
 }

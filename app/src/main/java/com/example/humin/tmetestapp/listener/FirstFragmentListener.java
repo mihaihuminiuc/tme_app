@@ -5,5 +5,5 @@ package com.example.humin.tmetestapp.listener;
  */
 
 public interface FirstFragmentListener {
-    void onFirstFragmentClick();
+    void onFirstFragmentClick(String url);
 }

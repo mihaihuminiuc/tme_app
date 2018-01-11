@@ -7,12 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.humin.tmetestapp.R;
 import com.example.humin.tmetestapp.adapter.ListViewAdapter;
 import com.example.humin.tmetestapp.listener.FirstFragmentListener;
+import com.example.humin.tmetestapp.listener.WallpaperListClickListener;
 import com.example.humin.tmetestapp.model.WallpaperList;
 
 /**
@@ -22,7 +25,11 @@ import com.example.humin.tmetestapp.model.WallpaperList;
 public class FirstFragment extends Fragment {
 
     private FirstFragmentListener mListener;
+    private WallpaperListClickListener mWallpaperListClickListener;
+
+    private RecyclerView recyclerView;
     private WallpaperList mWallpapersList;
+
     private Context mContext;
 
     public static FirstFragment newInstance(WallpaperList mList){
@@ -45,8 +52,10 @@ public class FirstFragment extends Fragment {
     }
 
     private void setupList(View view){
-        ListViewAdapter adapter = new ListViewAdapter(mWallpapersList,ListViewAdapter.ADAPTER_STATE_1,mContext);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.simple_recyclerview);
+        mWallpaperListClickListener = url -> mListener.onFirstFragmentClick(url);
+
+        ListViewAdapter adapter = new ListViewAdapter(mWallpapersList,ListViewAdapter.ADAPTER_STATE_1,mContext,mWallpaperListClickListener);
+        recyclerView = view.findViewById(R.id.simple_recyclerview);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(mContext,2);
         recyclerView.setLayoutManager(layoutManager);

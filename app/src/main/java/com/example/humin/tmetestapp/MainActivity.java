@@ -1,54 +1,52 @@
 package com.example.humin.tmetestapp;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.FrameLayout;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
-import com.example.humin.tmetestapp.api.ApiUtils;
-import com.example.humin.tmetestapp.fragments.FirstFragment;
-import com.example.humin.tmetestapp.listener.FirstFragmentListener;
-import com.example.humin.tmetestapp.model.WallpaperList;
-import com.google.gson.Gson;
+/**
+ * Created by humin on 1/11/2018.
+ */
 
-public class MainActivity extends AppCompatActivity implements FirstFragmentListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FrameLayout mFrameLayout;
-    private FirstFragment mFirstFragment;
     private Context mContext;
+    private Button mButtonActivity1, mButtonActivity2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
         mContext=getApplicationContext();
-        mFrameLayout = findViewById(R.id.frame_x);
 
-        initFragment();
-
+        initUI();
     }
 
-    private void initFragment(){
+    private void initUI(){
 
-        ApiUtils.getWallpapers(mContext, response -> {
-            Gson gson =  new Gson();
+        mButtonActivity1 = findViewById(R.id.button_1);
+        mButtonActivity2 = findViewById(R.id.button_2);
 
-            WallpaperList wallpapers = gson.fromJson(response,WallpaperList.class);
-
-            mFirstFragment = FirstFragment.newInstance(wallpapers);
-
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.frame_x, mFirstFragment).commit();
-
-        }, error -> Toast.makeText(mContext,"Error:"+error.toString(),Toast.LENGTH_LONG).show());
+        mButtonActivity1.setOnClickListener(this);
+        mButtonActivity2.setOnClickListener(this);
     }
 
     @Override
-    public void onFirstFragmentClick() {
-
+    public void onClick(View view) {
+        Intent i;
+        switch (view.getId()){
+            case R.id.button_1:
+                i = new Intent(mContext, Activity1.class);
+                startActivity(i);
+                break;
+            case R.id.button_2:
+                i = new Intent(mContext, Activity2.class);
+                startActivity(i);
+                break;
+        }
     }
+
 }

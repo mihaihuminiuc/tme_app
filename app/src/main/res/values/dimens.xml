@@ -2,4 +2,5 @@
 <resources>
     <dimen name="text_size_medium_big" >25sp</dimen>
     <dimen name="gird_item_margin_yellow">5.5dp</dimen>
+    <dimen name="margin_bottom_fab">15dp</dimen>
 </resources>
