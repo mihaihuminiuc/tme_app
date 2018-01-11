@@ -1,12 +1,12 @@
 package com.example.humin.tmetestapp.model;
 
-import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
 
 /**
  * Created by humin on 12/27/2017.
  */
 
-public class Wallpaper {
+public class Wallpaper implements Serializable {
 
     public String getImg_url() {
         return img_url;

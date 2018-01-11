@@ -46,6 +46,6 @@ dependencies {
     compile "com.google.code.gson:gson:$rootProject.gson"
     compile "com.android.volley:volley:$rootProject.volley"
     compile "com.android.support.constraint:constraint-layout:$rootProject.constraint"
-
-
+    compile "com.google.android.gms:play-services-ads:$rootProject.AdMob"
+    compile "com.facebook.android:audience-network-sdk:$rootProject.FacebookAd"
 }

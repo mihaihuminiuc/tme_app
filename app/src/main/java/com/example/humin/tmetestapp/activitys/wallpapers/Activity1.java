@@ -1,4 +1,4 @@
-package com.example.humin.tmetestapp;
+package com.example.humin.tmetestapp.activitys.wallpapers;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.humin.tmetestapp.R;
 import com.example.humin.tmetestapp.api.ApiUtils;
 import com.example.humin.tmetestapp.fragments.FirstFragment;
 import com.example.humin.tmetestapp.listener.FirstFragmentListener;

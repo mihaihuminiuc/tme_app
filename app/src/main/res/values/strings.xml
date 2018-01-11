@@ -4,6 +4,12 @@
     <string name="json_key_wallpapers">wallpapers</string>
     <string name="fragment_1">FRAGMENT_1</string>
     <string name="fragment_2">FRAGMENT_2</string>
-    <string name="activity_1">ACTIVITY_1</string>
-    <string name="activity_2">ACTIVITY_2</string>
+    <string name="activity_1">ACTIVITY_2_ROWS</string>
+    <string name="activity_2">ACTIVITY_3_ROWS</string>
+    <string name="admob_placemnet_id">ca-app-pub-3188130179542594/8777728066</string>
+    <string name="add_Activity">ADD_ACTIVITY</string>
+    <string name="wallpaper_activity">WALLPAPER_ACTIVITY</string>
+    <string name="click_me_button_text">CLICK ME</string>
+    <string name="button_click_toast_message">button was clicked</string>
+    <string name="key_my_list">my_list</string>
 </resources>

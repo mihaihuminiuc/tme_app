@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <LinearLayout
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,14 +19,14 @@
         <Button
             android:padding="@dimen/gird_item_margin_yellow"
             android:id="@+id/button_1"
-            android:text="@string/add_Activity"
+            android:text="@string/activity_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <Button
             android:padding="@dimen/gird_item_margin_yellow"
             android:id="@+id/button_2"
-            android:text="@string/wallpaper_activity"
+            android:text="@string/activity_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

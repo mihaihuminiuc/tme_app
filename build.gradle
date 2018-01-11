@@ -44,4 +44,6 @@ ext {
     volley = '1.0.0'
     glideVersion = '4.3.0'
     constraint = '1.0.2'
+    AdMob = '11.8.0'
+    FacebookAd = "4.+"
 }

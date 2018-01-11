@@ -1,4 +1,4 @@
-package com.example.humin.tmetestapp;
+package com.example.humin.tmetestapp.activitys;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,13 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.humin.tmetestapp.R;
+import com.example.humin.tmetestapp.activitys.wallpapers.Activity1;
+import com.example.humin.tmetestapp.activitys.wallpapers.Activity2;
+import com.example.humin.tmetestapp.activitys.wallpapers.MainWallpaperActivity;
+
 /**
  * Created by humin on 1/11/2018.
  */
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Context mContext;
+
     private Button mButtonActivity1, mButtonActivity2;
 
     @Override
@@ -24,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initUI();
     }
+
 
     private void initUI(){
 
@@ -39,11 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i;
         switch (view.getId()){
             case R.id.button_1:
-                i = new Intent(mContext, Activity1.class);
+                i = new Intent(mContext, AddActivity.class);
                 startActivity(i);
                 break;
             case R.id.button_2:
-                i = new Intent(mContext, Activity2.class);
+                i = new Intent(mContext, MainWallpaperActivity.class);
                 startActivity(i);
                 break;
         }

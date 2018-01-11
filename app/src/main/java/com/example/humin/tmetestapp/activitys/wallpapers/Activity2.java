@@ -1,4 +1,4 @@
-package com.example.humin.tmetestapp;
+package com.example.humin.tmetestapp.activitys.wallpapers;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.example.humin.tmetestapp.R;
 import com.example.humin.tmetestapp.api.ApiUtils;
 import com.example.humin.tmetestapp.fragments.SecondFragment;
 import com.example.humin.tmetestapp.model.WallpaperList;
@@ -57,5 +58,15 @@ public class Activity2 extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         this.finish();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
