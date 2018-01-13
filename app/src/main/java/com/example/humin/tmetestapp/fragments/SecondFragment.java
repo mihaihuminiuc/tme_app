@@ -48,6 +48,12 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if(savedInstanceState!=null){
+            if(savedInstanceState.getSerializable(getString(R.string.key_my_list))!=null){
+                mWallpapersList= (WallpaperList) savedInstanceState.getSerializable(getString(R.string.key_my_list));
+                Toast.makeText(getActivity(),"RESTORE",Toast.LENGTH_LONG).show();
+            }
+        }
         mContext = getActivity();
         initUI(view);
         setupList(view);
@@ -90,6 +96,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-
+        savedInstanceState.putSerializable(getString(R.string.key_my_list), mWallpapersList);
+        Toast.makeText(getActivity(),"SAVE",Toast.LENGTH_LONG).show();
     }
 }
