@@ -2,6 +2,7 @@ package com.example.humin.tmetestapp.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.orm.SugarRecord;
 
 import java.io.Serializable;
 import java.util.ArrayList;

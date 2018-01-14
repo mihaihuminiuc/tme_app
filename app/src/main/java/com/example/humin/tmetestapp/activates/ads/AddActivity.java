@@ -1,4 +1,4 @@
-package com.example.humin.tmetestapp.activitys;
+package com.example.humin.tmetestapp.activates.ads;
 
 import android.content.Context;
 import android.os.Bundle;

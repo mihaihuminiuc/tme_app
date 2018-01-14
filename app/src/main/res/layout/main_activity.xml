@@ -10,7 +10,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/button_layout"
         android:layout_width="0dp"
@@ -27,6 +27,13 @@
             android:padding="@dimen/gird_item_margin_yellow"
             android:id="@+id/button_2"
             android:text="@string/wallpaper_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:padding="@dimen/gird_item_margin_yellow"
+            android:id="@+id/button_3"
+            android:text="@string/advertising_id_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

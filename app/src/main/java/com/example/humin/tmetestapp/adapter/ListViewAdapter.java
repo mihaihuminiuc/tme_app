@@ -72,4 +72,8 @@ public class ListViewAdapter extends RecyclerView.Adapter{
         }
         notifyDataSetChanged();
     }
+
+    public WallpaperList getList(){
+        return this.wallpapers;
+    }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.humin.tmetestapp.activitys.wallpapers.Activity1">
+    tools:context="com.example.humin.tmetestapp.activates.wallpapers.Activity1">
 
     <FrameLayout
         android:id="@+id/frame_x"

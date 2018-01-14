@@ -1,4 +1,4 @@
-package com.example.humin.tmetestapp.activitys.wallpapers;
+package com.example.humin.tmetestapp.activates.wallpapers;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -8,9 +8,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -36,7 +34,7 @@ public class Activity1 extends AppCompatActivity implements FirstFragmentListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_1);
+        setContentView(R.layout.row_2_activity);
         mContext=getApplicationContext();
 
         initUI();

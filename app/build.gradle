@@ -48,4 +48,5 @@ dependencies {
     compile "com.android.support.constraint:constraint-layout:$rootProject.constraint"
     compile "com.google.android.gms:play-services-ads:$rootProject.AdMob"
     compile "com.facebook.android:audience-network-sdk:$rootProject.FacebookAd"
+    compile "com.github.satyan:sugar:$rootProject.SugarORM"
 }

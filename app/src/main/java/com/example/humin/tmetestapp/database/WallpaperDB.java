@@ -1,14 +1,12 @@
-package com.example.humin.tmetestapp.model;
+package com.example.humin.tmetestapp.database;
 
 import com.orm.SugarRecord;
 
-import java.io.Serializable;
-
 /**
- * Created by humin on 12/27/2017.
+ * Created by humin on 1/14/2018.
  */
 
-public class Wallpaper implements Serializable{
+public class WallpaperDB extends SugarRecord{
 
     public String getImg_url() {
         return img_url;
@@ -26,7 +24,9 @@ public class Wallpaper implements Serializable{
         this.tmb_url = tmb_url;
     }
 
-    public Wallpaper(String img_url, String tmb_url){
+    public WallpaperDB(){}
+
+    public WallpaperDB(String img_url, String tmb_url){
         this.img_url=img_url;
         this.tmb_url=tmb_url;
     }

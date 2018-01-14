@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.humin.tmetestapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:allowBackup="true"
+        tools:replace="android:icon"
         android:icon="@mipmap/ic_launcher"
         android:name=".TmeApp"
         android:label="@string/app_name"
@@ -13,7 +17,13 @@
         android:supportsRtl="true"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
-        <activity android:name=".activitys.MainActivity">
+
+        <meta-data android:name="DATABASE" android:value="tme.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.humin.tmetestapp.database" />
+
+        <activity android:name=".activates.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,20 +32,25 @@
         </activity>
 
         <activity
-            android:name=".activitys.wallpapers.Activity2"
+            android:name=".activates.wallpapers.Activity2"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".activitys.wallpapers.Activity1"
+            android:name=".activates.wallpapers.Activity1"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".activitys.wallpapers.MainWallpaperActivity"
+            android:name=".activates.wallpapers.MainWallpaperActivity"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".activitys.AddActivity"
+            android:name=".activates.ads.AddActivity"
             android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".activates.advertising_id.AdvertisingIdActivity"
+            android:theme="@style/AppTheme"/>
+
     </application>
 
 </manifest>

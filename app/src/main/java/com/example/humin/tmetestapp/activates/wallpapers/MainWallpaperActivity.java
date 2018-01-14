@@ -1,4 +1,4 @@
-package com.example.humin.tmetestapp.activitys;
+package com.example.humin.tmetestapp.activates.wallpapers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,15 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.humin.tmetestapp.R;
-import com.example.humin.tmetestapp.activitys.wallpapers.Activity1;
-import com.example.humin.tmetestapp.activitys.wallpapers.Activity2;
-import com.example.humin.tmetestapp.activitys.wallpapers.MainWallpaperActivity;
 
 /**
  * Created by humin on 1/11/2018.
  */
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainWallpaperActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Context mContext;
 
@@ -25,12 +22,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.main_wallpaper_acivity);
         mContext=getApplicationContext();
 
         initUI();
     }
-
 
     private void initUI(){
 
@@ -46,14 +42,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i;
         switch (view.getId()){
             case R.id.button_1:
-                i = new Intent(mContext, AddActivity.class);
+                i = new Intent(mContext, Activity1.class);
                 startActivity(i);
                 break;
             case R.id.button_2:
-                i = new Intent(mContext, MainWallpaperActivity.class);
+                i = new Intent(mContext, Activity2.class);
                 startActivity(i);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.finish();
     }
 
 }

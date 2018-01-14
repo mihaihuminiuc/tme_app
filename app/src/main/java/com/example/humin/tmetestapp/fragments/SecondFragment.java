@@ -14,10 +14,14 @@ import android.widget.Toast;
 
 import com.example.humin.tmetestapp.R;
 import com.example.humin.tmetestapp.adapter.ListViewAdapter;
+import com.example.humin.tmetestapp.database.WallpaperDB;
 import com.example.humin.tmetestapp.listener.WallpaperListClickListener;
 import com.example.humin.tmetestapp.model.Wallpaper;
 import com.example.humin.tmetestapp.model.WallpaperList;
+import com.example.humin.tmetestapp.util.PreferencesUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -28,6 +32,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
 
     private RecyclerView recyclerView;
     private WallpaperList mWallpapersList;
+    private List<Wallpaper> mWallpaper;
     private ListViewAdapter adapter;
     private WallpaperListClickListener mWallpaperListClickListener;
     private FloatingActionButton mFloatingActionButton;
@@ -42,18 +47,13 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.second_fragment_layout, container, false);
+        return inflater.inflate(R.layout.row_3_fragment, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(savedInstanceState!=null){
-            if(savedInstanceState.getSerializable(getString(R.string.key_my_list))!=null){
-                mWallpapersList= (WallpaperList) savedInstanceState.getSerializable(getString(R.string.key_my_list));
-                Toast.makeText(getActivity(),"RESTORE",Toast.LENGTH_LONG).show();
-            }
-        }
+
         mContext = getActivity();
         initUI(view);
         setupList(view);
@@ -67,6 +67,19 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
 
     private void setupList(View view){
         mWallpaperListClickListener = url -> Toast.makeText(mContext,url,Toast.LENGTH_LONG).show();
+
+        if(PreferencesUtils.getIsSaved(mContext) && (WallpaperDB.listAll(WallpaperDB.class) !=null || !WallpaperDB.listAll(WallpaperDB.class).isEmpty())){
+
+            Toast.makeText(mContext, "RESTORED", Toast.LENGTH_SHORT).show();
+
+            mWallpaper = new ArrayList<>();
+
+            for(WallpaperDB w : WallpaperDB.listAll(WallpaperDB.class)){
+                mWallpaper.add(new Wallpaper(w.getImg_url(),w.getTmb_url()));
+            }
+
+            mWallpapersList.setWallpapers(mWallpaper);
+        }
 
         adapter = new ListViewAdapter(mWallpapersList,ListViewAdapter.ADAPTER_STATE_2,mContext,mWallpaperListClickListener);
         recyclerView = view.findViewById(R.id.simple_recyclerview);
@@ -96,7 +109,16 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putSerializable(getString(R.string.key_my_list), mWallpapersList);
-        Toast.makeText(getActivity(),"SAVE",Toast.LENGTH_LONG).show();
+
+        PreferencesUtils.setIsSaved(mContext,true);
+
+        Toast.makeText(mContext, "SAVED", Toast.LENGTH_SHORT).show();
+
+        WallpaperDB.deleteAll(WallpaperDB.class);
+
+        for(Wallpaper w : adapter.getList().getWallpapers()){
+            WallpaperDB wallpaperDB = new WallpaperDB(w.getImg_url(),w.getTmb_url());
+            wallpaperDB.save();
+        }
     }
 }

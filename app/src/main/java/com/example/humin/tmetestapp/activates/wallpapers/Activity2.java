@@ -1,4 +1,4 @@
-package com.example.humin.tmetestapp.activitys.wallpapers;
+package com.example.humin.tmetestapp.activates.wallpapers;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -23,21 +23,14 @@ public class Activity2 extends AppCompatActivity{
 
     private SecondFragment mSecondFragment;
 
-    private WallpaperList mWallpapersList;
-
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState!=null){
-            if(savedInstanceState.getSerializable(getString(R.string.key_my_list))!=null){
-                mWallpapersList= (WallpaperList) savedInstanceState.getSerializable(getString(R.string.key_my_list));
-                Toast.makeText(getApplicationContext(),"RESTORE",Toast.LENGTH_LONG).show();
-            }
-        }
-        setContentView(R.layout.activity_2);
+
+        setContentView(R.layout.row_3_activity);
         mContext=getApplicationContext();
 
         initFragment();
@@ -66,20 +59,5 @@ public class Activity2 extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         this.finish();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putSerializable(getString(R.string.key_my_list), mWallpapersList);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        if(savedInstanceState.getSerializable(getString(R.string.key_my_list))!=null){
-            mWallpapersList= (WallpaperList) savedInstanceState.getSerializable(getString(R.string.key_my_list));
-            Toast.makeText(getApplicationContext(),"RESTORE",Toast.LENGTH_LONG).show();
-        }
     }
 }

@@ -12,4 +12,12 @@
     <string name="click_me_button_text">CLICK ME</string>
     <string name="button_click_toast_message">button was clicked</string>
     <string name="key_my_list">my_list</string>
+
+    <string name="date_addvertising_id">%1$d.%2$d.%3$d.%4$s</string>
+    <string name="phone_permision_error">Phone state permission allows us to get phone number. Please allow it for additional functionality.</string>
+    <string name="phone_permision_denied">Permission Denied. We can\'t get phone number.</string>
+    <string name="io_exception">IOException</string>
+    <string name="google_play_exception">GooglePlay Services Not Available Exception</string>
+    <string name="google_play_repair_exception">GooglePlay Services Repairable Exception</string>
+    <string name="advertising_id_activity">Advertising_ID_ACTIVITY</string>
 </resources>

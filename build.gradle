@@ -46,4 +46,5 @@ ext {
     constraint = '1.0.2'
     AdMob = '11.8.0'
     FacebookAd = "4.+"
+    SugarORM = "1.5"
 }
