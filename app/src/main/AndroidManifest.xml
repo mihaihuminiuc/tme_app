@@ -32,11 +32,11 @@
         </activity>
 
         <activity
-            android:name=".activates.wallpapers.Activity2"
+            android:name=".activates.wallpapers.WallpaperActivity3Row"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".activates.wallpapers.Activity1"
+            android:name=".activates.wallpapers.WallpaperActivity2Row"
             android:theme="@style/AppTheme" />
 
         <activity

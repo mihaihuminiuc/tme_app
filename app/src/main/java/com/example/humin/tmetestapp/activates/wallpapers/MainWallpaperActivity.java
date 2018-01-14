@@ -42,11 +42,11 @@ public class MainWallpaperActivity extends AppCompatActivity implements View.OnC
         Intent i;
         switch (view.getId()){
             case R.id.button_1:
-                i = new Intent(mContext, Activity1.class);
+                i = new Intent(mContext, WallpaperActivity2Row.class);
                 startActivity(i);
                 break;
             case R.id.button_2:
-                i = new Intent(mContext, Activity2.class);
+                i = new Intent(mContext, WallpaperActivity3Row.class);
                 startActivity(i);
                 break;
         }

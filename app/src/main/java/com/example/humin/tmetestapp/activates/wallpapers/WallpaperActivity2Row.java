@@ -19,7 +19,7 @@ import com.example.humin.tmetestapp.listener.FirstFragmentListener;
 import com.example.humin.tmetestapp.model.WallpaperList;
 import com.google.gson.Gson;
 
-public class Activity1 extends AppCompatActivity implements FirstFragmentListener{
+public class WallpaperActivity2Row extends AppCompatActivity implements FirstFragmentListener{
 
     private ProgressBar mProgressBar;
     private FrameLayout mFrameX;

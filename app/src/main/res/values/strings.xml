@@ -20,4 +20,5 @@
     <string name="google_play_exception">GooglePlay Services Not Available Exception</string>
     <string name="google_play_repair_exception">GooglePlay Services Repairable Exception</string>
     <string name="advertising_id_activity">Advertising_ID_ACTIVITY</string>
+    <string name="phone_number_warning">NO PHONE NUMBER</string>
 </resources>

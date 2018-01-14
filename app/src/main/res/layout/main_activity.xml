@@ -18,15 +18,15 @@
 
         <Button
             android:padding="@dimen/gird_item_margin_yellow"
-            android:id="@+id/button_1"
-            android:text="@string/add_Activity"
+            android:id="@+id/button_2"
+            android:text="@string/wallpaper_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <Button
             android:padding="@dimen/gird_item_margin_yellow"
-            android:id="@+id/button_2"
-            android:text="@string/wallpaper_activity"
+            android:id="@+id/button_1"
+            android:text="@string/add_Activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

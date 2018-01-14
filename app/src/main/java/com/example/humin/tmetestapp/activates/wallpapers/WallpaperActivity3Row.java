@@ -17,7 +17,7 @@ import com.google.gson.Gson;
  * Created by humin on 1/11/2018.
  */
 
-public class Activity2 extends AppCompatActivity{
+public class WallpaperActivity3Row extends AppCompatActivity{
 
     private Context mContext;
 

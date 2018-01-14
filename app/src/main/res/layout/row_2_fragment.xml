@@ -25,21 +25,15 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
-    <GridView
-        android:id="@+id/grid"
+    <android.support.v7.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline"
-        android:numColumns="2"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        android:scrollbarStyle="outsideOverlay"
-        android:verticalScrollbarPosition="right"
-        android:scrollbars="vertical">
-    </GridView>
+        android:id="@+id/simple_recyclerview"
+        />
 
 </android.support.constraint.ConstraintLayout>
 

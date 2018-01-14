@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.humin.tmetestapp.R;
 import com.example.humin.tmetestapp.util.CommonUtils;
+import com.example.humin.tmetestapp.util.SyncObject;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -34,13 +35,15 @@ public class AdvertisingIdActivity  extends AppCompatActivity implements View.On
     private TextView mTextView;
     private Button mButton;
 
-    private boolean isOn=false;
-
     private Calendar mCalendar;
-
     private Context mContext;
 
     private static final int PERMISSION_REQUEST_CODE = 1;
+
+    private static final int STATE_0=0;
+    private static final int STATE_1=1;
+
+    private SyncObject syncObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,10 @@ public class AdvertisingIdActivity  extends AppCompatActivity implements View.On
     }
 
     private void initUI(){
+
+        syncObject = new SyncObject();
+        syncObject.setState(STATE_0);
+
         mSwitch = findViewById(R.id.switch_1);
         mTextView = findViewById(R.id.text_view_1);
         mButton = findViewById(R.id.button_1);
@@ -68,9 +75,9 @@ public class AdvertisingIdActivity  extends AppCompatActivity implements View.On
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button_1:
-                if(isOn)
+                if(syncObject.getState()==STATE_0)
                     new MyTask().execute();
-                else
+                else if(syncObject.getState()==STATE_1)
                     setDateAndPhoneNumber();
                 break;
         }
@@ -80,7 +87,10 @@ public class AdvertisingIdActivity  extends AppCompatActivity implements View.On
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         switch (compoundButton.getId()){
             case R.id.switch_1:
-                isOn=b;
+                if(b)
+                    syncObject.setState(STATE_1);
+                else
+                    syncObject.setState(STATE_0);
                 break;
         }
     }
@@ -96,10 +106,10 @@ public class AdvertisingIdActivity  extends AppCompatActivity implements View.On
     private String getPhone() {
         TelephonyManager phoneMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(mContext, R.string.phone_permision_error, Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, R.string.phone_number_warning, Toast.LENGTH_LONG).show();
             return "";
         }
-        return phoneMgr.getLine1Number();
+        return phoneMgr != null ? phoneMgr.getLine1Number() : null;
     }
 
     private void requestPermission(String permission){
@@ -128,11 +138,14 @@ public class AdvertisingIdActivity  extends AppCompatActivity implements View.On
 
         mCalendar = Calendar.getInstance();
 
+        if(text==null || text.isEmpty())
+            text="NO VALUE";
+
         currentString = getResources().getString(R.string.date_addvertising_id,
                 mCalendar.get(Calendar.DAY_OF_MONTH), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.YEAR), text);
 
         if(mTextView!=null){
-            finalString = currentString + mTextView.getText().toString()+ "//";
+            finalString = currentString + "//" + mTextView.getText().toString();
             mTextView.setText(finalString);
         }
     }
