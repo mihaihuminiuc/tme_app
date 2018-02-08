@@ -1,37 +1,68 @@
 package com.example.humin.tmetestapp.model;
 
-import com.orm.SugarRecord;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-import java.io.Serializable;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by humin on 12/27/2017.
  */
 
-public class Wallpaper implements Serializable{
+public class Wallpaper implements Parcelable{
 
-    public String getImg_url() {
-        return img_url;
+    public static final Creator<Wallpaper> CREATOR = new Creator<Wallpaper>() {
+        @Override
+        public Wallpaper createFromParcel(Parcel in) {
+            return new Wallpaper(in);
+        }
+
+        @Override
+        public Wallpaper[] newArray(int size) {
+            return new Wallpaper[size];
+        }
+    };
+
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
-    public String getTmb_url() {
-        return tmb_url;
+    public String getTmbUrl() {
+        return tmbUrl;
     }
 
-    public void setTmb_url(String tmb_url) {
-        this.tmb_url = tmb_url;
+    public void setTmbUrl(String tmbUrl) {
+        this.tmbUrl = tmbUrl;
     }
 
-    public Wallpaper(String img_url, String tmb_url){
-        this.img_url=img_url;
-        this.tmb_url=tmb_url;
+    public Wallpaper(String imgUrl, String tmbUrl){
+        this.imgUrl=imgUrl;
+        this.tmbUrl=tmbUrl;
     }
 
-    private String img_url;
+    @SerializedName("img_url")
+    private String imgUrl;
 
-    private String tmb_url;
+    @SerializedName("img_url")
+    private String tmbUrl;
+
+    public Wallpaper(Parcel in){
+        this.imgUrl = in.readString();
+        this.tmbUrl = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(this.imgUrl);
+        parcel.writeString(this.tmbUrl);
+    }
 }

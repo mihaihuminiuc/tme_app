@@ -8,30 +8,30 @@ import com.orm.SugarRecord;
 
 public class WallpaperDB extends SugarRecord{
 
-    public String getImg_url() {
-        return img_url;
-    }
-
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
-    }
-
-    public String getTmb_url() {
-        return tmb_url;
-    }
-
-    public void setTmb_url(String tmb_url) {
-        this.tmb_url = tmb_url;
-    }
-
     public WallpaperDB(){}
 
-    public WallpaperDB(String img_url, String tmb_url){
-        this.img_url=img_url;
-        this.tmb_url=tmb_url;
+    public WallpaperDB(String imgUrl, String tmbUrl){
+        this.imgUrl=imgUrl;
+        this.tmbUrl=tmbUrl;
     }
 
-    private String img_url;
+    public String getImgUrl() {
+        return imgUrl;
+    }
 
-    private String tmb_url;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getTmbUrl() {
+        return tmbUrl;
+    }
+
+    public void setTmbUrl(String tmbUrl) {
+        this.tmbUrl = tmbUrl;
+    }
+
+    private String imgUrl;
+
+    private String tmbUrl;
 }

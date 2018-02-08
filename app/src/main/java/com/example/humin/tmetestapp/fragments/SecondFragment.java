@@ -16,6 +16,7 @@ import com.example.humin.tmetestapp.R;
 import com.example.humin.tmetestapp.adapter.ListViewAdapter;
 import com.example.humin.tmetestapp.database.WallpaperDB;
 import com.example.humin.tmetestapp.listener.WallpaperListClickListener;
+import com.example.humin.tmetestapp.model.PreferenceUtilModel;
 import com.example.humin.tmetestapp.model.Wallpaper;
 import com.example.humin.tmetestapp.model.WallpaperList;
 import com.example.humin.tmetestapp.util.PreferencesUtils;
@@ -37,6 +38,7 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
     private WallpaperListClickListener mWallpaperListClickListener;
     private FloatingActionButton mFloatingActionButton;
     private Context mContext;
+    private PreferenceUtilModel mPreferenceUtilModel;
 
     public static SecondFragment newInstance(WallpaperList mList){
         SecondFragment fragment = new SecondFragment();
@@ -68,14 +70,17 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
     private void setupList(View view){
         mWallpaperListClickListener = url -> Toast.makeText(mContext,url,Toast.LENGTH_LONG).show();
 
-        if(PreferencesUtils.getIsSaved(mContext) && (WallpaperDB.listAll(WallpaperDB.class) !=null || !WallpaperDB.listAll(WallpaperDB.class).isEmpty())){
+        mPreferenceUtilModel = PreferencesUtils.getPreferenceModel(mContext);
+
+        if(mPreferenceUtilModel!=null && mPreferenceUtilModel.isSaved()
+                && (WallpaperDB.listAll(WallpaperDB.class) !=null || !WallpaperDB.listAll(WallpaperDB.class).isEmpty())){
 
             Toast.makeText(mContext, "RESTORED", Toast.LENGTH_SHORT).show();
 
             mWallpaper = new ArrayList<>();
 
             for(WallpaperDB w : WallpaperDB.listAll(WallpaperDB.class)){
-                mWallpaper.add(new Wallpaper(w.getImg_url(),w.getTmb_url()));
+                mWallpaper.add(new Wallpaper(w.getImgUrl(),w.getTmbUrl()));
             }
 
             mWallpapersList.setWallpapers(mWallpaper);
@@ -110,15 +115,23 @@ public class SecondFragment extends Fragment implements View.OnClickListener{
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
-        PreferencesUtils.setIsSaved(mContext,true);
+        mPreferenceUtilModel.setSaved(true);
+
+        PreferencesUtils.setPreferenceModel(mContext,mPreferenceUtilModel);
 
         Toast.makeText(mContext, "SAVED", Toast.LENGTH_SHORT).show();
 
         WallpaperDB.deleteAll(WallpaperDB.class);
 
         for(Wallpaper w : adapter.getList().getWallpapers()){
-            WallpaperDB wallpaperDB = new WallpaperDB(w.getImg_url(),w.getTmb_url());
+            WallpaperDB wallpaperDB = new WallpaperDB(w.getImgUrl(),w.getTmbUrl());
             wallpaperDB.save();
         }
+    }
+
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        mWallpaperListClickListener = null;
     }
 }

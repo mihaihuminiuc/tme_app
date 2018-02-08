@@ -71,4 +71,10 @@ public class FirstFragment extends Fragment {
                     + " must implement FirstFragmentListener");
         }
     }
+
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        mListener = null;
+    }
 }

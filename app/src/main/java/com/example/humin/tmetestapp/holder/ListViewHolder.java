@@ -64,11 +64,11 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
                 options.centerCrop();
 
                 Glide.with(context)
-                        .load(mWallpaper.getTmb_url())
+                        .load(mWallpaper.getTmbUrl())
                         .apply(options)
                         .into(mWallpaperImage);
 
-                view.setOnClickListener(view -> mWallpaperListClickListener.onItemClick(mWallpaper.getImg_url()));
+                view.setOnClickListener(view -> mWallpaperListClickListener.onItemClick(mWallpaper.getImgUrl()));
 
                 break;
             case ListViewAdapter.ADAPTER_STATE_2:
@@ -84,11 +84,11 @@ public class ListViewHolder extends RecyclerView.ViewHolder {
                 options.centerCrop();
 
                 Glide.with(context)
-                        .load(mWallpaper.getTmb_url())
+                        .load(mWallpaper.getTmbUrl())
                         .apply(options)
                         .into(mWallpaperImage);
 
-                view.setOnClickListener(view -> mWallpaperListClickListener.onItemClick(mWallpaper.getImg_url()));
+                view.setOnClickListener(view -> mWallpaperListClickListener.onItemClick(mWallpaper.getImgUrl()));
 
                 break;
         }
