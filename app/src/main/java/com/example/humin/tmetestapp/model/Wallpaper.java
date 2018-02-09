@@ -47,7 +47,7 @@ public class Wallpaper implements Parcelable{
     @SerializedName("img_url")
     private String imgUrl;
 
-    @SerializedName("img_url")
+    @SerializedName("tmp_url")
     private String tmbUrl;
 
     public Wallpaper(Parcel in){

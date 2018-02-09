@@ -14,8 +14,8 @@ import com.example.humin.tmetestapp.util.CustomStringRequest;
 
 public class ApiUtils {
 
-    private static String BASE_URL="http://api.timmystudios.com/api";
-    private static String GET_WALLPAPERS_URL =BASE_URL+"/android/wallpapers.json";
+    private static String BASE_URL="http://192.168.2.118:8080/";
+    private static String GET_WALLPAPERS_URL =BASE_URL+"rest/get/json";
 
     public static void getWallpapers(Context context, Response.Listener<String> successListener, Response.ErrorListener errorListener){
         RequestQueue queue = Volley.newRequestQueue(context);
